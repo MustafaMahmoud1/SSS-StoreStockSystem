@@ -1,0 +1,20 @@
+﻿@model Store
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="m-5">Add New Store</h1>
+<form action="/Store/Create" method="post">
+
+    <partial name="PartialViews/CreateEditStorePartial" />
+
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <input type="submit" value="Add Store" class="btn btn-success btn-lg m-5" ripple />
+    </div>
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <a asp-controller="Store" asp-action="index" class="btn btn-outline-success btn-lg" ripple>Back To Stores</a>
+    </div>
+    </form>
+@section ValidationScriptSection{
+<partial name="_ValidationScriptsPartial" />
+}

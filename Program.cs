@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SSS_StoreStockSystem.BLL.Interfaces;
 using SSS_StoreStockSystem.BLL.Repositories;
 using SSS_StoreStockSystem.DAL.Data;
+using SSS_StoreStockSystem.DAL.Data.Seeding;
 
 namespace SSS_StoreStockSystem
 {
@@ -17,6 +18,8 @@ namespace SSS_StoreStockSystem
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            ContextSeed.SeedAsync(builder.Services.BuildServiceProvider().GetRequiredService<AppDBContext>());
+
             builder.Services.AddScoped<IStoreRepository, StoreRepository>();
             builder.Services.AddScoped<IItemRepository, ItemRepository>();
 

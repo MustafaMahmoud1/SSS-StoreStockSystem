@@ -4,19 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Stores</h1>
+<h1 class="m-5">Stores <i class="fas fa-store"></i></h1>
 
-<a asp-controller="Store" asp-action="Create" class="btn btn-primary">
-    Add New Store
-</a>
-@if(Model.Count() < 0)
+@if(Model.Count() > 0)
 {
-    <div class="table-responsive">
+    <div class="table-responsive m-0">
         <table class="table table-hover table-light border-primary">
             <thead>
                 <tr>
                     <th scope="col">Code</th>
-                    <th scope="col">Image</th
+                    <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Location</th>
                     <th scope="col">Operations</th>
@@ -27,12 +24,12 @@
                 {
                     <tr>
                      <th scope="row">@store.Code</th>
-                    <td><img href="@store.ImageUrl"></img></td>
+                    <td><img href=""></img></td>
                     <td>@store.Name</td>
                     <td>@store.Location</td>
                     <td>
-                        <a asp-controller="Store" asp-action="Edit" asp-route-id="@store.StoreId" class="btn btn-info"> <i class="far fa-pen-to-square"></i> Edit Store</a>
-                        <a asp-controller="Store" asp-action="Delete" asp-route-id="@store.StoreId" class="btn btn-danger"> <i class="far fa-trash-can"></i> Delete Store</a>
+                        <a asp-controller="Store" asp-action="Edit" asp-route-id="@store.Id" class="btn btn-info"> <i class="far fa-pen-to-square"></i> Edit Store</a>
+                        <a asp-controller="Store" asp-action="Delete" asp-route-id="@store.Id" class="btn btn-danger"> <i class="far fa-trash-can"></i> Delete Store</a>
                     </td>
                 </tr>
                 }
@@ -40,10 +37,14 @@
 
         </table>
     </div>
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <a asp-controller="Store" asp-action="Create" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i> Add New Store</a>
+
+    </div>
 }
 else
 {
-    <div class="alert alert-primary mb-0 alert-dismissible alert-absolute fade show " id="alertExample" role="alert" data-mdb-color="secondary">
+    <div class="alert alert-primary mb-0 alert-dismissible alert-absolute fade show m-5" id="alertExample" role="alert" data-mdb-color="secondary">
         <i class="fas fa-store-slash"></i>
         There's No Stores Found in the Database
         <a asp-controller="Store" asp-action="Create" class="alert-link me-1">Add Store!</a>

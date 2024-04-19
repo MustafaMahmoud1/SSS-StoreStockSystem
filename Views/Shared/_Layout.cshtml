@@ -103,8 +103,7 @@
 <!-- End footer -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <!-- MDB -->
     <script type="text/javascript" src="~/mdb5-free-standard/js/mdb.umd.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("ValidationScriptSection", required: false)
 </body>
 </html>

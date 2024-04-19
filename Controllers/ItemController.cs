@@ -1,22 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SSS_StoreStockSystem.BLL.Interfaces;
-using SSS_StoreStockSystem.BLL.Repositories;
-using SSS_StoreStockSystem.DAL.Data;
 using SSS_StoreStockSystem.DAL.Models;
 
-namespace SSS_StoreStockSystem.Controllers
+namespace SSS_ItemStockSystem.Controllers
 {
-    public class StoreController : Controller
+    public class ItemController : Controller
     {
-        private readonly IStoreRepository _storeRepository;
-        public StoreController(IStoreRepository storeRepository)
+        private readonly IItemRepository _itemRepository;
+        public ItemController(IItemRepository itemRepository)
         {
-            _storeRepository = storeRepository;
+            _itemRepository = itemRepository;
         }
         public IActionResult Index()
         {
-            var stores = _storeRepository.GetAll();
-            return View(stores);
+            var items = _itemRepository.GetAll();
+            return View(items);
         }
         [HttpGet]
         public IActionResult Create()
@@ -25,9 +23,9 @@ namespace SSS_StoreStockSystem.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Store store)
+        public IActionResult Create(Item item)
         {
-            var count = _storeRepository.Add(store);
+            var count = _itemRepository.Add(item);
             if (count > 0)
             {
                 return RedirectToAction(nameof(Index));
@@ -41,22 +39,22 @@ namespace SSS_StoreStockSystem.Controllers
             {
                 return BadRequest();
             }
-            var store = _storeRepository.GetById(id.Value);
-            if (store == null)
+            var item = _itemRepository.GetById(id.Value);
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(store);
+            return View(item);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([FromRoute] int id,Store store) 
+        public IActionResult Edit([FromRoute] int id, Item item)
         {
-            if (id == store.Id)
+            if (id == item.Id)
                 return BadRequest();
             try
             {
-                var count = _storeRepository.Update(store);
+                var count = _itemRepository.Update(item);
                 if (count > 0)
                 {
                     return RedirectToAction(nameof(Index));
@@ -67,23 +65,23 @@ namespace SSS_StoreStockSystem.Controllers
                 //exception
             }
 
-            return View(store);
+            return View(item);
         }
         [HttpGet]
-        public IActionResult Delete(int? id) 
+        public IActionResult Delete(int? id)
         {
             if (!id.HasValue)
             {
                 return BadRequest();
             }
-            var store = _storeRepository.GetById(id.Value);
-            if (store == null)
+            var item = _itemRepository.GetById(id.Value);
+            if (item == null)
             {
                 return NotFound();
             }
             try
             {
-                _storeRepository.Delete(store);
+                _itemRepository.Delete(item);
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -92,7 +90,7 @@ namespace SSS_StoreStockSystem.Controllers
                 //Exception Handling
                 return View("Index");
             }
-          
+
         }
     }
 }
