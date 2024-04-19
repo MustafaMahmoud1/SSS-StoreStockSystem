@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Store>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Stores</h1>
+
+<a asp-controller="Store" asp-action="Create" class="btn btn-primary">
+    Add New Store
+</a>
+@if(Model.Count() < 0)
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-light border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Image</th
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var store in Model)
+                {
+                    <tr>
+                     <th scope="row">@store.Code</th>
+                    <td><img href="@store.ImageUrl"></img></td>
+                    <td>@store.Name</td>
+                    <td>@store.Location</td>
+                    <td>
+                        <a asp-controller="Store" asp-action="Edit" asp-route-id="@store.StoreId" class="btn btn-info"> <i class="far fa-pen-to-square"></i> Edit Store</a>
+                        <a asp-controller="Store" asp-action="Delete" asp-route-id="@store.StoreId" class="btn btn-danger"> <i class="far fa-trash-can"></i> Delete Store</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-primary mb-0 alert-dismissible alert-absolute fade show " id="alertExample" role="alert" data-mdb-color="secondary">
+        <i class="fas fa-store-slash"></i>
+        There's No Stores Found in the Database
+        <a asp-controller="Store" asp-action="Create" class="alert-link me-1">Add Store!</a>
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
