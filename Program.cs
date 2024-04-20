@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using SSS_StoreStockSystem.BLL.Interfaces;
 using SSS_StoreStockSystem.BLL.Repositories;
+using SSS_StoreStockSystem.BLL.UnitOfWork;
 using SSS_StoreStockSystem.DAL.Data;
 using SSS_StoreStockSystem.DAL.Data.Seeding;
+using SSS_StoreStockSystem.Helpers;
 
 namespace SSS_StoreStockSystem
 {
@@ -20,8 +22,8 @@ namespace SSS_StoreStockSystem
             });
             ContextSeed.SeedAsync(builder.Services.BuildServiceProvider().GetRequiredService<AppDBContext>());
 
-            builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-            builder.Services.AddScoped<IItemRepository, ItemRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));
 
 
             var app = builder.Build();

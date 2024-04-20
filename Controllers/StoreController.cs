@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using SSS_StoreStockSystem.BLL.Interfaces;
 using SSS_StoreStockSystem.BLL.Repositories;
+using SSS_StoreStockSystem.BLL.UnitOfWork;
 using SSS_StoreStockSystem.DAL.Data;
 using SSS_StoreStockSystem.DAL.Models;
 
@@ -8,14 +11,18 @@ namespace SSS_StoreStockSystem.Controllers
 {
     public class StoreController : Controller
     {
-        private readonly IStoreRepository _storeRepository;
-        public StoreController(IStoreRepository storeRepository)
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+
+
+        public StoreController(IMapper mapper, IUnitOfWork unitOfWork)
         {
-            _storeRepository = storeRepository;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            var stores = _storeRepository.GetAll();
+            var stores = _unitOfWork.StoreRepository.GetAll().ToArray();
             return View(stores);
         }
         [HttpGet]
@@ -27,7 +34,8 @@ namespace SSS_StoreStockSystem.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Store store)
         {
-            var count = _storeRepository.Add(store);
+            _unitOfWork.StoreRepository.Add(store);
+            var count = _unitOfWork.Complete();
             if (count > 0)
             {
                 return RedirectToAction(nameof(Index));
@@ -41,7 +49,7 @@ namespace SSS_StoreStockSystem.Controllers
             {
                 return BadRequest();
             }
-            var store = _storeRepository.GetById(id.Value);
+            var store = _unitOfWork.StoreRepository.GetById(id.Value);
             if (store == null)
             {
                 return NotFound();
@@ -56,7 +64,8 @@ namespace SSS_StoreStockSystem.Controllers
                 return BadRequest();
             try
             {
-                var count = _storeRepository.Update(store);
+                _unitOfWork.StoreRepository.Update(store);
+                var count = _unitOfWork.Complete();
                 if (count > 0)
                 {
                     return RedirectToAction(nameof(Index));
@@ -76,14 +85,15 @@ namespace SSS_StoreStockSystem.Controllers
             {
                 return BadRequest();
             }
-            var store = _storeRepository.GetById(id.Value);
+            var store = _unitOfWork.StoreRepository.GetById(id.Value);
             if (store == null)
             {
                 return NotFound();
             }
             try
             {
-                _storeRepository.Delete(store);
+                _unitOfWork.StoreRepository.Delete(store);
+                var count = _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
