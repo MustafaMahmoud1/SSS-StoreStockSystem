@@ -1,20 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SSS_StoreStockSystem.BLL.Interfaces;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using SSS_StoreStockSystem.BLL.UnitOfWork;
 using SSS_StoreStockSystem.DAL.Models;
+using SSS_StoreStockSystem.ViewModels;
 
 namespace SSS_ItemStockSystem.Controllers
 {
     public class ItemController : Controller
     {
-        private readonly IItemRepository _itemRepository;
-        public ItemController(IItemRepository itemRepository)
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+
+
+        public ItemController(IMapper mapper, IUnitOfWork unitOfWork)
         {
-            _itemRepository = itemRepository;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            var items = _itemRepository.GetAll();
-            return View(items);
+            var items = _unitOfWork.ItemRepository.GetAll().ToArray();
+            var mappedItems = _mapper.Map<Item[], ItemViewModel[]>(items);
+            return View(mappedItems);
         }
         [HttpGet]
         public IActionResult Create()
@@ -23,9 +30,11 @@ namespace SSS_ItemStockSystem.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Item item)
+        public IActionResult Create(ItemViewModel itemVM)
         {
-            var count = _itemRepository.Add(item);
+            var item = _mapper.Map<Item>(itemVM);
+            _unitOfWork.ItemRepository.Add(item);
+            var count = _unitOfWork.Complete();
             if (count > 0)
             {
                 return RedirectToAction(nameof(Index));
@@ -39,22 +48,26 @@ namespace SSS_ItemStockSystem.Controllers
             {
                 return BadRequest();
             }
-            var item = _itemRepository.GetById(id.Value);
+            var item = _unitOfWork.ItemRepository.GetById(id.Value);
             if (item == null)
             {
                 return NotFound();
             }
-            return View(item);
+            var mappedItem = _mapper.Map<ItemViewModel>(item);
+            return View(mappedItem);
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([FromRoute] int id, Item item)
+        public IActionResult Edit([FromRoute] int id, ItemViewModel itemVM)
         {
-            if (id == item.Id)
+            if (id == itemVM.Id)
                 return BadRequest();
+            var mappedItem = _mapper.Map<Item>(itemVM);
             try
             {
-                var count = _itemRepository.Update(item);
+                _unitOfWork.ItemRepository.Update(mappedItem);
+                var count = _unitOfWork.Complete();
                 if (count > 0)
                 {
                     return RedirectToAction(nameof(Index));
@@ -62,10 +75,11 @@ namespace SSS_ItemStockSystem.Controllers
             }
             catch (Exception ex)
             {
-                //exception
+                TempData["Error"] = ex.Message;
+                return View("Index");
             }
 
-            return View(item);
+            return View(mappedItem);
         }
         [HttpGet]
         public IActionResult Delete(int? id)
@@ -74,20 +88,21 @@ namespace SSS_ItemStockSystem.Controllers
             {
                 return BadRequest();
             }
-            var item = _itemRepository.GetById(id.Value);
+            var item = _unitOfWork.ItemRepository.GetById(id.Value);
             if (item == null)
             {
                 return NotFound();
             }
             try
             {
-                _itemRepository.Delete(item);
+                _unitOfWork.ItemRepository.Delete(item);
+                var count = _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
 
-                //Exception Handling
+                TempData["Error"] = ex.Message;
                 return View("Index");
             }
 

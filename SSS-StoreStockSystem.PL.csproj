@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>SSS_StoreStockSystem</RootNamespace>
   </PropertyGroup>
@@ -18,6 +18,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SSS-StoreStockSystem.BLL\SSS-StoreStockSystem.BLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\files\images\" />
   </ItemGroup>
 
 </Project>

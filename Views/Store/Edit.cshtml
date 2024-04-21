@@ -1,21 +1,22 @@
 ﻿@model StoreViewModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1 class="m-5">Add New Store <i class="fa-solid fa-shop"></i> </h1>
-<form action="/Store/Create" method="post" enctype="multipart/form-data">
+<h1 class="m-5">Edit Store <i class="fa-solid fa-shop"></i> </h1>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
 
     <partial name="PartialViews/CreateEditStorePartial" />
 
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
-        <input mdbRipple data-mdb-ripple-init type="submit" value="Add Store" class="btn btn-success btn-lg m-2" />
+        <input mdbRipple data-mdb-ripple-init type="submit" value="Edit Store" class="btn btn-success btn-lg m-2" />
     </div>
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
         <a asp-controller="Store" asp-action="index" mdbRipple data-mdb-ripple-init class="btn btn-outline-success btn-lg m-2">Back To Stores <i class="fa-regular fa-hand-point-left"></i></a>
     </div>
-    </form>
-@section ValidationScriptSection
-{
-<partial name="_ValidationScriptsPartial" />
+    <input type="hidden" asp-for="ImageName" />
+</form>
+@section ValidationScriptSection {
+    <partial name="_ValidationScriptsPartial" />
 }
+

@@ -1,12 +1,47 @@
-﻿@* 
+﻿@model IEnumerable<StockViewModel>
+
 @{
     ViewData["Title"] = "Index";
 }
+<h1 class="m-5">Stores <i class="fas fa-store"></i></h1>
+@if (Model.Count() > 0)
+{
+    <div class="table-responsive m-0">
+        <table class="table table-hover border-danger">
+            <thead>
+                <tr>
+                    <th scope="col">Store Code</th>
+                    <th scope="col">Store Name</th>
+                    <th scope="col">Item Code</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Current Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stock in Model)
+                {
+                    <tr>
+                        <th scope="row">@stock.StoreCode</th>
+                        <td>@stock.StoreName</td>
+                        <td>@stock.ItemCode</td>
+                        <td>@stock.ItemName</td>
+                        <td>@stock.Quantity</td>
+                    </tr>
+                }
+            </tbody>
 
-<h1>Stock</h1>
-<div class="form-group">
-    <label class="col-form-label" asp-for="Store"></label>
-    <select asp-for="Store" class="form-control" asp-items="ViewBag.StoreList"></select>
-</div>
-
- *@
+        </table>
+    </div>
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <a mdbRipple data-mdb-ripple-init asp-controller="Stock" asp-action="Alter" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i>Alter Stock</a>
+    </div>
+}
+else
+{
+    <div class="alert alert-primary mb-0 alert-dismissible alert-absolute fade show m-5" id="alertExample" role="alert" data-mdb-color="secondary">
+        <i class="fas fa-store-slash"></i>
+        There's No Stock Found in the Database
+        <a asp-controller="Stock" asp-action="Alter" class="alert-link me-1">Alter Stock!</a>
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

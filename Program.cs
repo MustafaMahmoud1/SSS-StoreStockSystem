@@ -23,6 +23,7 @@ namespace SSS_StoreStockSystem
             ContextSeed.SeedAsync(builder.Services.BuildServiceProvider().GetRequiredService<AppDBContext>());
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IStockRepository, StockRepository>();
             builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));
 
 

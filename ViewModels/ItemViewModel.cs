@@ -6,6 +6,7 @@ namespace SSS_StoreStockSystem.ViewModels
 {
     public class ItemViewModel
     {
+        public int Id { get; set; }
 
         [MaxLength(7, ErrorMessage = "Code must be 7 characters.")]
         [MinLength(7, ErrorMessage = "Code must be 7 characters.")]
@@ -21,6 +22,9 @@ namespace SSS_StoreStockSystem.ViewModels
 
         [Range(0, 9999)]
         public double Price { get; set; }
+
+        public IFormFile Image { get; set; }
+        public string ImageName { get; set; }
 
         public ICollection<StoreItem> StoreItems { get; } = new HashSet<StoreItem>();
     }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Store>
+﻿@model IEnumerable<StoreViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -24,12 +24,12 @@
                 {
                     <tr>
                      <th scope="row">@store.Code</th>
-                    <td><img href=""></img></td>
+                    <td><img src="~/files/images/@store.ImageName" style="width:100px"></img></td>
                     <td>@store.Name</td>
                     <td>@store.Location</td>
                     <td>
-                        <a asp-controller="Store" asp-action="Edit" asp-route-id="@store.Id" class="btn btn-info"> <i class="far fa-pen-to-square"></i> Edit Store</a>
-                        <a asp-controller="Store" asp-action="Delete" asp-route-id="@store.Id" class="btn btn-danger"> <i class="far fa-trash-can"></i> Delete Store</a>
+                    <a mdbRipple data-mdb-ripple-init asp-controller="Store" asp-action="Edit" asp-route-id="@store.Id" class="btn btn-info m-2"> <i class="far fa-pen-to-square"></i> Edit Store</a>
+                    <a mdbRipple data-mdb-ripple-init asp-controller="Store" asp-action="Delete" asp-route-id="@store.Id" class="btn btn-danger m-2"> <i class="far fa-trash-can"></i> Delete Store</a>
                     </td>
                 </tr>
                 }
@@ -38,7 +38,7 @@
         </table>
     </div>
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
-        <a asp-controller="Store" asp-action="Create" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i> Add New Store</a>
+        <a mdbRipple data-mdb-ripple-init asp-controller="Store" asp-action="Create" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i> Add New Store</a>
 
     </div>
 }

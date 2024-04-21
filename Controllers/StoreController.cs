@@ -6,6 +6,9 @@ using SSS_StoreStockSystem.BLL.Repositories;
 using SSS_StoreStockSystem.BLL.UnitOfWork;
 using SSS_StoreStockSystem.DAL.Data;
 using SSS_StoreStockSystem.DAL.Models;
+using SSS_StoreStockSystem.Helpers;
+using SSS_StoreStockSystem.ViewModels;
+using System.Reflection.Metadata;
 
 namespace SSS_StoreStockSystem.Controllers
 {
@@ -23,7 +26,8 @@ namespace SSS_StoreStockSystem.Controllers
         public IActionResult Index()
         {
             var stores = _unitOfWork.StoreRepository.GetAll().ToArray();
-            return View(stores);
+            var mappedStores = _mapper.Map<Store[], StoreViewModel[]>(stores);
+            return View(mappedStores);
         }
         [HttpGet]
         public IActionResult Create()
@@ -31,9 +35,10 @@ namespace SSS_StoreStockSystem.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Store store)
+        public IActionResult Create(StoreViewModel storeVM)
         {
+            storeVM.ImageName = DocumentSettings.UploadFile(storeVM.Image, "images");
+            var store = _mapper.Map<Store>(storeVM);
             _unitOfWork.StoreRepository.Add(store);
             var count = _unitOfWork.Complete();
             if (count > 0)
@@ -54,17 +59,22 @@ namespace SSS_StoreStockSystem.Controllers
             {
                 return NotFound();
             }
-            return View(store);
+            var mappedStore = _mapper.Map<StoreViewModel>(store);
+            return View(mappedStore);
+
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit([FromRoute] int id,Store store) 
+        public IActionResult Edit(StoreViewModel storeVM) 
         {
-            if (id == store.Id)
-                return BadRequest();
+            if (storeVM.Image != null)
+            {
+                DocumentSettings.DeleteFile(storeVM.ImageName, "images");
+                storeVM.ImageName = DocumentSettings.UploadFile(storeVM.Image, "images");
+            }
+            var mappedStore = _mapper.Map<Store>(storeVM);
             try
             {
-                _unitOfWork.StoreRepository.Update(store);
+                _unitOfWork.StoreRepository.Update(mappedStore);
                 var count = _unitOfWork.Complete();
                 if (count > 0)
                 {
@@ -73,10 +83,11 @@ namespace SSS_StoreStockSystem.Controllers
             }
             catch (Exception ex)
             {
-                //exception
+                TempData["Error"] = ex.Message;
+                return View("Index");
             }
 
-            return View(store);
+            return View(mappedStore);
         }
         [HttpGet]
         public IActionResult Delete(int? id) 
@@ -92,16 +103,18 @@ namespace SSS_StoreStockSystem.Controllers
             }
             try
             {
-                _unitOfWork.StoreRepository.Delete(store);
+                store.IsDeleted = true;
+                _unitOfWork.StoreRepository.Update(store);
                 var count = _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
 
-                //Exception Handling
+                TempData["Error"] = ex.Message;
                 return View("Index");
             }
+
           
         }
     }

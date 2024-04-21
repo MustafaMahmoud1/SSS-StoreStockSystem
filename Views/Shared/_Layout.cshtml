@@ -21,7 +21,7 @@
         <!--Start navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="/Home/Index"></a>
                 <button data-mdb-collapse-init
                         class="navbar-toggler"
                         type="button"
@@ -34,16 +34,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/Home/Index">
+                                <img src="~/codezonelogo.webp" style="width: 80px;" />
+                                </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Store">Stores</a>
+                            <a class="nav-link" asp-controller="/Store">Stores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Item">Items</a>
+                            <a class="nav-link" asp-controller="/Item">Items</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Stock">Stock</a>
+                            <a class="nav-link" asp-controller="/Stock">Stock</a>
                         </li>
                     </ul>
                 </div>
@@ -66,12 +68,12 @@
 
     <!-- Section: Social media -->
     <section class="mb-4">
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
-      <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                <a mdbRipple data-mdb-ripple-init class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
     </section>
     <!-- Section: Social media -->
 

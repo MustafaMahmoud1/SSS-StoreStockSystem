@@ -16,13 +16,15 @@ namespace SSS_StoreStockSystem.ViewModels
         [MaxLength(100)]
         [MinLength(2)]
         [Required]
-        [RegularExpression(@"^[A-Za-z]{2,100}$", ErrorMessage = "Name must be between 2 and 100 alphabetic characters.")]
         public string Name { get; set; }
 
         [MaxLength(100)]
         [MinLength(2)]
-        [RegularExpression(@"^[A-Za-z]{2,100}$", ErrorMessage = "Location must be between 2 and 100 alphabetic characters.")]
         public string? Location { get; set; }
+
+        public IFormFile Image { get; set; }
+        public string ImageName { get; set; }
+
         public ICollection<StoreItem> StoreItems { get; } = new HashSet<StoreItem>();
     }
 }

@@ -1,30 +1,30 @@
-﻿@model Store
-<div class="form-outline m-5" style="width: 22rem;" data-mdb-input-init>
-    <input type="text" id="form20" name="Code" class="form-control form-control-lg form-icon-trailing" />
-    <label class="form-label" for="form20">Store Code</label>
-    <div class="form-helper">Example: CRF-001</div>
+﻿@model StoreViewModel
+
+<div class="h-100 d-flex flex-row justify-content-start align-items-center">
+    <div class="form-outline m-3" style="width: 22rem;" data-mdb-input-init>
+        <input asp-for="Code" type="text" id="form20" name="Code" class="form-control form-control-lg form-icon-trailing" />
+        <label class="form-label" for="form20">Store Code</label>
+        <div class="form-helper">Example: CRF-001</div>
+    </div>
     <span asp-validation-for="Code" class="text-danger"> </span>
 </div>
-<div class="form-outline m-5 " style="width: 22rem;" data-mdb-input-init>
-    <input type="text" id="form20" name="Name" class="form-control form-control-lg form-icon-trailing" />
-    <label class="form-label" for="form20">Store Name</label>
-    <div class="form-helper">Example: Carrefour</div>
-    <span asp-validation-for="Name" class="text-danger"> </span>
 
+<div class="h-100 d-flex flex-row justify-content-start align-items-center">
+    <div class="form-outline m-3 " style="width: 22rem;" data-mdb-input-init>
+        <input asp-for="Name" type="text" id="form20" name="Name" class="form-control form-control-lg form-icon-trailing" />
+        <label class="form-label" for="form20">Store Name</label>
+        <div class="form-helper">Example: Carrefour</div>
+    </div>
+    <span asp-validation-for="Name" class="text-danger"> </span>
 </div>
-<div class="form-outline m-5 " style="width: 22rem;" data-mdb-input-init>
-    <input type="text" id="form20" name="Location" class="form-control form-control-lg form-icon-trailing" />
-    <label class="form-label" for="form20">Store Location</label>
-    <div class="form-helper">Example: Cairo, Nasr City</div>
+
+<div class="h-100 d-flex flex-row justify-content-start align-items-center">
+    <div class="form-outline m-3 " style="width: 22rem;" data-mdb-input-init>
+        <input asp-for="Location" type="text" id="form20" name="Location" class="form-control form-control-lg form-icon-trailing" />
+        <label class="form-label" for="form20">Store Location</label>
+        <div class="form-helper">Example: Cairo, Nasr City</div>
+    </div>
     <span asp-validation-for="Location" class="text-danger"> </span>
 </div>
-<div class="col-md-6 position-relative">
-    <div class="form-outline" data-mdb-input-init>
-        <input type="text" class="form-control" id="validationTooltip05" required />
-        <label for="validationTooltip05" class="form-label">Zip</label>
-        <div class="invalid-tooltip">Please provide a valid zip.</div>
-    </div>
-</div>
-<div class="col-12 pt-2">
-    <button class="btn btn-primary" type="submit" data-mdb-ripple-init>Submit form</button>
-</div>
+<input asp-for="Image" class="form-control form-control-lg w-25 m-4" id="formFileLg" type="file" />
+
