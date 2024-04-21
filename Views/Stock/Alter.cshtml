@@ -1,0 +1,81 @@
+﻿@using SSS_StoreStockSystem.BLL.Interfaces
+@model IEnumerable<StockViewModel>
+@inject IStockRepository _stockRepository
+@{
+    ViewData["Title"] = "Alter";
+    ViewData["Stores"] = _stockRepository.GetStores();
+    ViewData["Items"] = _stockRepository.GetItems();
+
+}
+
+<h1 class="m-5">Alter Stock <i class="fa-solid fa-file-invoice-dollar"></i> </h1>
+<form asp-action="Alter" method="post">
+    <div class="form-group w-50 m-4">
+    <label value="Store" class=" control-label col-form-label"></label>
+        <select id="store-select" name="StoreId" class="trigger-select form-control form-select-lg">
+        <option>All Stores</option>
+        @foreach (var item in ViewData["Stores"] as IEnumerable<Store>)
+        {
+            <option value="@item.Id">@item.Name - @item.Code</option>
+        }
+    </select>
+</div>
+    <div class="form-group w-50 m-4">
+    <label value="Items" class="control-label col-form-label"></label>
+        <select id="item-select" name="itemId" class="trigger-select form-control form-select-lg">
+        <option> None </option>
+        @foreach (var item in ViewData["Items"] as IEnumerable<Item>)
+        {
+            <option value="@item.Id">@item.Name - @item.Code</option>
+        }
+    </select>
+    </div>
+    <div class="form-outline w-50 m-4" data-mdb-input-init>
+        <input class="form-control form-control-lg"
+               id="formControlReadonly"
+               type="text"
+               value=" "
+               aria-label="readonly input example"
+               readonly />
+        <label class="form-label" for="formControlReadonly">Current Quantity</label>
+    </div>
+    <div class="input-group w-50 m-4">
+        <input type="text"
+               class="form-control form-control-lg"
+               placeholder="Enter Quantity"
+               aria-label="Recipient's username with two button addons"
+               name="advancedQuantity"/>
+        <button class="btn btn-outline-success" name ="process" value="buy" type="submit" data-mdb-ripple-init data-mdb-ripple-color="dark">
+            Buy
+        </button>
+        <button class="btn btn-outline-danger" name="process" value="sell" type="submit" data-mdb-ripple-init data-mdb-ripple-color="dark">
+            Sell
+        </button>
+    </div>
+</form>
+<div class="h-100 d-flex flex-row justify-content-end align-items-end">
+    <a asp-controller="Stock" asp-action="Index" mdbRipple data-mdb-ripple-init class="btn btn-outline-primary btn-lg m-2"> <i class="fa-regular fa-hand-point-left"></i> Back To Stock Items</a>
+</div>
+<script>
+    @section Scripts
+    {
+        <script>
+            $(document).ready(function () {
+            $(".trigger-select").change(function () {
+                var selectedStore = $("#store-select").children("option:selected").val();
+                var selectedItem = $("#item-select").children("option:selected").val();
+                $.ajax({
+                    url: "/Stock/GetQuantity",
+                    type: "GET",
+                    data: { storeId: selectedStore, itemId: selectedItem },
+                    success: function (data) {
+                        $("#formControlReadonly").val(data);
+                    }
+                });
+            });
+        });
+        </script>
+        }
+</script>
+
+

@@ -1,0 +1,22 @@
+﻿@model ItemViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="m-5">Edit Item <i class="fa-solid fa-bars-staggered"></i> </h1>
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <partial name="PartialViews/CreateEditItemPartial" />
+
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <button mdbRipple data-mdb-ripple-init type="submit" class="btn btn-success btn-lg m-2"><i class="fa-solid fa-check"></i> Edit Item </button>
+    </div>
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <a asp-controller="Item" asp-action="index" mdbRipple data-mdb-ripple-init class="btn btn-outline-success btn-lg m-2"><i class="fa-solid fa-angles-left"></i> Back To Items </a>
+    </div>
+    <input type="hidden" asp-for="ImageName" />
+</form>
+@section ValidationScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}
+

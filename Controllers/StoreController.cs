@@ -84,7 +84,7 @@ namespace SSS_StoreStockSystem.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(mappedStore);
@@ -112,7 +112,7 @@ namespace SSS_StoreStockSystem.Controllers
             {
 
                 TempData["Error"] = ex.Message;
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
 
           

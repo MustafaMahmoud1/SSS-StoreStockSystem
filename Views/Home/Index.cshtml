@@ -2,7 +2,45 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <h1 class="text-center">Welcome to <span class="font-monospace text-primary">StoreStockSystem</span> </h1>
+    <p class="text-center">A comprehensive inventory management solution.</p>
+
+    <section id="overview">
+        <h2 class="text-primary">Overview</h2>
+        <p>StoreStockSystem is an ASP.NET Core MVC application designed to manage inventory for stores and their items. It provides a comprehensive suite of CRUD operations, allowing users to create, read, update, and delete information about stores and items. Additionally, it features a stock management component where users can adjust item quantities in a store's inventory, reflecting sales and restocking activities.</p>
+    </section>
+    <section id="architecture">
+        <h2 class="text-primary">Architecture</h2>
+        <p>This project is built using an N-tier architecture to ensure separation of concerns, making the system easy to maintain and extend. The architecture is divided into the following layers: Presentation Layer, Business Logic Layer, Data Access Layer, Entity Layer.</p>
+    </section>
+
+    <section id="features">
+        <h2 class="text-primary">Features</h2>
+        <ul>
+            <li>Manage stores and items with full CRUD capabilities.</li>
+            <li>Adjust inventory levels with stock management features.</li>
+            <li>Upload and delete documents related to stores and items.</li>
+            <li>Responsive design for accessibility on various devices.</li>
+            <li>Client-side validations for immediate user input feedback.</li>
+            <li>Dynamic content updates with jQuery and AJAX.</li>
+            <li>Stylish, responsive layouts with Bootstrap.</li>
+        </ul>
+    </section>
+
+    <section id="technologies">
+        <h2 class="text-primary">Technologies</h2>
+        <ul>
+            <li>ASP.NET Core MVC</li>
+            <li>Entity Framework Core</li>
+            <li>LINQ</li>
+            <li>MS SQL Server</li>
+            <li>Bootstrap</li>
+            <li>jQuery</li>
+            <li>AJAX</li>
+            <li>AutoMapper</li>
+        </ul>
+    </section>
+
+    
 </div>

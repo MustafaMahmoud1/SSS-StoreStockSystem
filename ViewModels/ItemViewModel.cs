@@ -17,7 +17,6 @@ namespace SSS_StoreStockSystem.ViewModels
         [MaxLength(100, ErrorMessage ="Name must be less than 100 characters.")]
         [MinLength(2, ErrorMessage = "Name must be more than 2 characters.")]
         [Required]
-        [RegularExpression(@"^[A-Za-z]{2,100}$", ErrorMessage = "Name must be between 2 and 100 alphabetic characters.")]
         public string? Name { get; set; }
 
         [Range(0, 9999)]

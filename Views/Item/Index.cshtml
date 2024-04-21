@@ -1,7 +1,61 @@
-﻿
+﻿@model IEnumerable<ItemViewModel>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="m-5"> Items <i class="fa-solid fa-table-list"></i></h1>
 
+@if (Model.Count() > 0)
+{
+    <div class="table-responsive m-0">
+        <table class="table table-hover table-light border-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Code</th>
+                        <td><img src="~/files/images/@item.ImageName" style="width:100px"></td>
+                        <td>@item.Name</td>
+                        <td>@item.Price $</td>
+                        <td>
+                            <a mdbRipple data-mdb-ripple-init asp-controller="Item" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info m-2"> <i class="far fa-pen-to-square"></i> Edit Item</a>
+                            <a mdbRipple data-mdb-ripple-init asp-controller="Item" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger m-2"> <i class="far fa-trash-can"></i> Delete Item</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+    <div class="h-100 d-flex flex-row justify-content-end align-items-end">
+        <a mdbRipple data-mdb-ripple-init asp-controller="Item" asp-action="Create" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i> Add New Item</a>
+
+    </div>
+}
+else
+{
+    <div class="alert alert-primary alert-dismissible alert-absolute fade show m-5" id="alertExample" role="alert" data-mdb-color="secondary">
+        <i class="fas fa-item-slash"></i>
+        There's No Items Found in the Database
+        <a asp-controller="Item" asp-action="Create" class="alert-link me-1">Add Item!</a>
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-primary alert-dismissible alert-absolute fade show m-5" id="alertExample" role="alert" data-mdb-color="secondary">
+        <i class="fas fa-check"></i>
+        @TempData["Message"]
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1 class="m-5">Stores <i class="fas fa-store"></i></h1>
+<h1 class="m-5">Stock <i class="fa-solid fa-list-check"></i></h1>
 @if (Model.Count() > 0)
 {
     <div class="table-responsive m-0">
@@ -33,7 +33,7 @@
         </table>
     </div>
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
-        <a mdbRipple data-mdb-ripple-init asp-controller="Stock" asp-action="Alter" class="btn btn-primary m-5 btn-lg"> <i class="far fa-square-plus"></i>Alter Stock</a>
+        <a mdbRipple data-mdb-ripple-init asp-controller="Stock" asp-action="Alter" class="btn btn-primary m-5 btn-lg"> <i class="fa-solid fa-pencil"></i> Alter Stock</a>
     </div>
 }
 else
@@ -45,3 +45,12 @@ else
         <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
     </div>
 }
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-danger mb-0 alert-dismissible alert-absolute fade show" id="alertExample" role="alert" data-mdb-color="secondary">
+
+        @TempData["Message"]
+
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+})

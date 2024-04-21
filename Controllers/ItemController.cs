@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using SSS_StoreStockSystem.BLL.UnitOfWork;
 using SSS_StoreStockSystem.DAL.Models;
+using SSS_StoreStockSystem.Helpers;
 using SSS_StoreStockSystem.ViewModels;
+
 
 namespace SSS_ItemStockSystem.Controllers
 {
@@ -29,9 +31,9 @@ namespace SSS_ItemStockSystem.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(ItemViewModel itemVM)
         {
+            itemVM.ImageName = DocumentSettings.UploadFile(itemVM.Image, "images");
             var item = _mapper.Map<Item>(itemVM);
             _unitOfWork.ItemRepository.Add(item);
             var count = _unitOfWork.Complete();
@@ -58,11 +60,13 @@ namespace SSS_ItemStockSystem.Controllers
 
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit([FromRoute] int id, ItemViewModel itemVM)
+        public IActionResult Edit(ItemViewModel itemVM)
         {
-            if (id == itemVM.Id)
-                return BadRequest();
+            if (itemVM.Image != null)
+            {
+                DocumentSettings.DeleteFile(itemVM.ImageName, "images");
+                itemVM.ImageName = DocumentSettings.UploadFile(itemVM.Image, "images");
+            }
             var mappedItem = _mapper.Map<Item>(itemVM);
             try
             {
@@ -76,7 +80,7 @@ namespace SSS_ItemStockSystem.Controllers
             catch (Exception ex)
             {
                 TempData["Error"] = ex.Message;
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(mappedItem);
@@ -95,7 +99,8 @@ namespace SSS_ItemStockSystem.Controllers
             }
             try
             {
-                _unitOfWork.ItemRepository.Delete(item);
+                item.IsDeleted = true;
+                _unitOfWork.ItemRepository.Update(item);
                 var count = _unitOfWork.Complete();
                 return RedirectToAction(nameof(Index));
             }
@@ -103,8 +108,9 @@ namespace SSS_ItemStockSystem.Controllers
             {
 
                 TempData["Error"] = ex.Message;
-                return View("Index");
+                return RedirectToAction(nameof(Index));
             }
+
 
         }
     }

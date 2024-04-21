@@ -9,10 +9,10 @@
     <partial name="PartialViews/CreateEditStorePartial" />
 
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
-        <input mdbRipple data-mdb-ripple-init type="submit" value="Edit Store" class="btn btn-success btn-lg m-2" />
+        <button mdbRipple data-mdb-ripple-init type="submit" class="btn btn-success btn-lg m-2"> <i class="fa-solid fa-check"></i> Edit Store </button>
     </div>
     <div class="h-100 d-flex flex-row justify-content-end align-items-end">
-        <a asp-controller="Store" asp-action="index" mdbRipple data-mdb-ripple-init class="btn btn-outline-success btn-lg m-2">Back To Stores <i class="fa-regular fa-hand-point-left"></i></a>
+        <a asp-controller="Item" asp-action="index" mdbRipple data-mdb-ripple-init class="btn btn-outline-success btn-lg m-2"> <i class="fa-solid fa-angles-left"></i> Back To Stores </a>
     </div>
     <input type="hidden" asp-for="ImageName" />
 </form>

@@ -24,7 +24,7 @@
                 {
                     <tr>
                      <th scope="row">@store.Code</th>
-                    <td><img src="~/files/images/@store.ImageName" style="width:100px"></img></td>
+                    <td><img src="~/files/images/@store.ImageName" style="width:100px"></td>
                     <td>@store.Name</td>
                     <td>@store.Location</td>
                     <td>
@@ -48,6 +48,14 @@ else
         <i class="fas fa-store-slash"></i>
         There's No Stores Found in the Database
         <a asp-controller="Store" asp-action="Create" class="alert-link me-1">Add Store!</a>
+        <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-primary alert-dismissible alert-absolute fade show m-5" id="alertExample" role="alert" data-mdb-color="secondary">
+        <i class="fas fa-check"></i>
+        @TempData["Message"]
         <button type="button" class="btn-close ms-2" data-mdb-dismiss="alert" aria-label="Close"></button>
     </div>
 }
