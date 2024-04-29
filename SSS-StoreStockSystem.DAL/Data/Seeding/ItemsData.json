@@ -1,0 +1,63 @@
+[
+  {
+    "Code": "ITM-001",
+    "Name": "Bottled Water",
+    "Price": 0.99,
+    "ImageName": "0b51d787-dc4b-46a8-a680-9aa3065e13d9.jpeg"
+
+  },
+  {
+    "Code": "ITM-002",
+    "Name": "Chocolate Bar",
+    "Price": 1.50,
+    "ImageName": "3854b9b5-c131-4c50-93fc-bb7b35ba7723.png"
+  },
+  {
+    "Code": "ITM-003",
+    "Name": "Potato Chips",
+    "Price": 2.00,
+    "ImageName": "47e38bf3-f20f-41df-a404-2154118dc3ca.webp"
+  },
+  {
+    "Code": "ITM-004",
+    "Name": "Fresh Milk",
+    "Price": 1.20,
+    "ImageName": "1613b382-d706-4c5e-b7b6-127249ded468.webp"
+  },
+  {
+    "Code": "ITM-005",
+    "Name": "White Bread",
+    "Price": 1.75,
+    "ImageName": "bb34c927-7f15-48a5-9c5a-203cbcfa30df.webp"
+  },
+  {
+    "Code": "ITM-006",
+    "Name": "Instant Noodles",
+    "Price": 0.85,
+    "ImageName": "82413ba7-a029-45e4-93a9-9810002ef6fe.jpg"
+  },
+  {
+    "Code": "ITM-007",
+    "Name": "Toothpaste",
+    "Price": 3.40,
+    "ImageName": "a399fa90-5eb8-4ee5-9e60-a2faccb9d668.jpg"
+  },
+  {
+    "Code": "ITM-008",
+    "Name": "Hand Sanitizer",
+    "Price": 2.50,
+    "ImageName": "0af9fe97-bc5f-4e1e-a80f-e404bccbd1fd.jpeg"
+  },
+  {
+    "Code": "ITM-009",
+    "Name": "Canned Soup",
+    "Price": 2.30,
+    "ImageName": "82b9f853-4a3d-40a6-97d5-40323a0f1332.jpeg"
+  },
+  {
+    "Code": "ITM-010",
+    "Name": "Eggs (dozen)",
+    "Price": 2.99,
+    "ImageName": "6a38a806-16fe-450b-80ad-fc45e74bfdd7.jpeg"
+  }
+]

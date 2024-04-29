@@ -1,0 +1,12 @@
+D:\C# Projects\SSS-StoreStockSystem.DAL\bin\Debug\net8.0\SSS-StoreStockSystem.DAL.deps.json
+D:\C# Projects\SSS-StoreStockSystem.DAL\bin\Debug\net8.0\SSS-StoreStockSystem.DAL.dll
+D:\C# Projects\SSS-StoreStockSystem.DAL\bin\Debug\net8.0\SSS-StoreStockSystem.DAL.pdb
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.AssemblyInfoInputs.cache
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.AssemblyInfo.cs
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.csproj.CoreCompileInputs.cache
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.dll
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\refint\SSS-StoreStockSystem.DAL.dll
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.pdb
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\ref\SSS-StoreStockSystem.DAL.dll
+D:\C# Projects\SSS-StoreStockSystem.DAL\obj\Debug\net8.0\SSS-StoreStockSystem.DAL.csproj.AssemblyReference.cache

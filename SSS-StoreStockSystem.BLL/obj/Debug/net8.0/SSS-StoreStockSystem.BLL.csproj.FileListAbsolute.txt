@@ -1,0 +1,15 @@
+D:\C# Projects\SSS-StoreStockSystem.BLL\bin\Debug\net8.0\SSS-StoreStockSystem.BLL.deps.json
+D:\C# Projects\SSS-StoreStockSystem.BLL\bin\Debug\net8.0\SSS-StoreStockSystem.BLL.dll
+D:\C# Projects\SSS-StoreStockSystem.BLL\bin\Debug\net8.0\SSS-StoreStockSystem.BLL.pdb
+D:\C# Projects\SSS-StoreStockSystem.BLL\bin\Debug\net8.0\SSS-StoreStockSystem.DAL.dll
+D:\C# Projects\SSS-StoreStockSystem.BLL\bin\Debug\net8.0\SSS-StoreStockSystem.DAL.pdb
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.csproj.AssemblyReference.cache
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.AssemblyInfoInputs.cache
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.AssemblyInfo.cs
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.csproj.CoreCompileInputs.cache
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-Stor.E67A2FBE.Up2Date
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.dll
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\refint\SSS-StoreStockSystem.BLL.dll
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\SSS-StoreStockSystem.BLL.pdb
+D:\C# Projects\SSS-StoreStockSystem.BLL\obj\Debug\net8.0\ref\SSS-StoreStockSystem.BLL.dll

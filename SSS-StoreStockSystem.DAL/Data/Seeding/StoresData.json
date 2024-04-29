@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Carrefour",
+    "Location": "Cairo, Nasr City",
+    "Code": "CRF-001",
+    "ImageName": "73debb85-2a6d-4b9f-8b8c-11e7551056c2.png"
+  },
+  {
+    "Name": "Fathalla Gomla Market",
+    "Location": "Alexandria, Smouha",
+    "Code": "FGM-002",
+    "ImageName": "27cf70b1-ef17-4a28-beba-59acb51ebe3c.jpg"
+  },
+  {
+    "Name": "Metro Market",
+    "Location": "Giza, Mohandessin",
+    "Code": "MTM-003",
+    "ImageName": "9bf6351a-12bf-4e67-8514-1208fa4bdb06.png"
+  },
+  {
+    "Name": "Kheir Zaman",
+    "Location": "Cairo, Maadi",
+    "Code": "KHZ-004",
+    "ImageName": "f4369aec-09f2-401d-a451-e098037ca62c.png"
+  },
+  {
+    "Name": "Spinneys",
+    "Location": "New Cairo, Fifth Settlement",
+    "Code": "SPY-005",
+    "ImageName": "1e581855-01c2-4252-aafb-bb3051ab43b8.png"
+  },
+  {
+    "Name": "Hyper One",
+    "Location": "6th of October City",
+    "Code": "HYP-006",
+    "ImageName": "f187254c-7276-43d5-ba70-ba25f99a91c4.jpeg"
+  },
+  {
+    "Name": "Seoudi Supermarket",
+    "Location": "Giza, Sheikh Zayed",
+    "Code": "SSM-007",
+    "ImageName": "14574691-ed6a-41f5-a0c0-5432a312fe83.jpeg"
+  },
+  {
+    "Name": "Oscar Grand Stores",
+    "Location": "Mansoura",
+    "Code": "OGS-008",
+    "ImageName": "b51c677a-1e52-497c-89cb-8b6644db6c10.webp"
+  },
+  {
+    "Name": "Alfa Market",
+    "Location": "Hurghada",
+    "Code": "ALF-009",
+    "ImageName": "6262587b-d3cf-43d7-8231-3a0ba6b60ce8.png"
+  },
+  {
+    "Name": "Zanaty Market",
+    "Location": "Port Said",
+    "Code": "ZNT-010",
+    "ImageName": "b5491963-5c18-4021-ade9-d8af6412aacd.png"
+  }
+]
