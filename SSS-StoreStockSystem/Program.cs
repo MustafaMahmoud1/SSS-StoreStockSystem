@@ -20,7 +20,6 @@ namespace SSS_StoreStockSystem
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
-            ContextSeed.SeedAsync(builder.Services.BuildServiceProvider().GetRequiredService<AppDBContext>());
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IStockRepository, StockRepository>();
@@ -28,6 +27,22 @@ namespace SSS_StoreStockSystem
 
 
             var app = builder.Build();
+
+            using var migrationScope = app.Services.CreateScope();
+            var services = migrationScope.ServiceProvider;
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var context = services.GetRequiredService<AppDBContext>();
+                context.Database.Migrate();
+                ContextSeed.SeedAsync(context);
+            }
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
+                logger.LogError(ex, "An error occurred during migration");
+            }
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
